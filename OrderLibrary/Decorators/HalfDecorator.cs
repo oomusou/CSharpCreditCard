@@ -3,19 +3,16 @@ using OrderLibrary.Interfaces;
 
 namespace OrderLibrary.Decorators
 {
-    public class HalfDecorator : IPrice
+    public class HalfDecorator : DecoratorBase
     {
-        private readonly IPrice _decorator;
-
-        public HalfDecorator(IPrice decorator)
+        public HalfDecorator(IPrice decorator) : base(decorator)
         {
-            _decorator = decorator;
         }
 
-        public double GetPrice(double price)
+        public override double GetPrice(double price)
         {
             Console.WriteLine("加一元多一件");
-            return _decorator.GetPrice(price);
+            return Decorator.GetPrice(price);
         }
     }
 }

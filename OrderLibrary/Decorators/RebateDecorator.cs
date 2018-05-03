@@ -2,20 +2,18 @@
 
 namespace OrderLibrary.Decorators
 {
-    public class RebateDecorator : IPrice
+    public class RebateDecorator : DecoratorBase
     {
         private const int Threshold = 1000;
         private const double Minus = 100.0;
-        private readonly IPrice _decorator;
 
-        public RebateDecorator(IPrice decorator)
+        public RebateDecorator(IPrice decorator) : base(decorator)
         {
-            _decorator = decorator;
         }
         
-        public double GetPrice(double price)
+        public override double GetPrice(double price)
         {
-            var newPrice = _decorator.GetPrice(price); 
+            var newPrice = Decorator.GetPrice(price); 
             
             return newPrice >= Threshold ? 
                    newPrice - Minus : 

@@ -2,19 +2,17 @@
 
 namespace OrderLibrary.Decorators
 {
-    public class DiscountDecorator : IPrice
+    public class DiscountDecorator : DecoratorBase
     {
         private const double Discount = 0.8;
-        private readonly IPrice _decorator;
         
-        public DiscountDecorator(IPrice decorator)
+        public DiscountDecorator(IPrice decorator) : base(decorator)
         {
-            _decorator = decorator;
         }
 
-        public double GetPrice(double price)
+        public override double GetPrice(double price)
         {
-            return Discount * _decorator.GetPrice(price);
+            return Discount * Decorator.GetPrice(price);
         }
     }
 }

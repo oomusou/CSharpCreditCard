@@ -1,12 +1,6 @@
-﻿using OrderLibrary.Interfaces;
-
-namespace OrderLibrary.Bank
+﻿namespace OrderLibrary.Bank
 {
-    public class Taishin : IPrice
+    public class Taishin : BankBase
     {
-        public double GetPrice(double price)
-        {
-            return price;
-        }
     }
 }

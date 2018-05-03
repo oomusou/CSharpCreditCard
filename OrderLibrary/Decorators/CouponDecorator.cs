@@ -3,19 +3,16 @@ using OrderLibrary.Interfaces;
 
 namespace OrderLibrary.Decorators
 {
-    public class CouponDecorator : IPrice
+    public class CouponDecorator : DecoratorBase
     {
-        private readonly IPrice _decorator;
-
-        public CouponDecorator(IPrice decorator)
+        public CouponDecorator(IPrice decorator) : base(decorator)
         {
-            _decorator = decorator;
         }
 
-        public double GetPrice(double price)
+        public override double GetPrice(double price)
         {
             Console.WriteLine("送100元折價券");
-            return _decorator.GetPrice(price);
+            return Decorator.GetPrice(price);
         }
     }
 }

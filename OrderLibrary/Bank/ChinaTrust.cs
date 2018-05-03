@@ -1,12 +1,6 @@
-﻿using OrderLibrary.Interfaces;
-
-namespace OrderLibrary.Bank
+﻿namespace OrderLibrary.Bank
 {
-    public class ChinaTrust : IPrice
+    public class ChinaTrust : BankBase
     {
-        public double GetPrice(double price)
-        {
-            return price;
-        }
     }
 }
