@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OrderLibrary.Bank;
 using OrderLibrary.Decorators;
 using OrderLibrary.Interfaces;
+using OrderLibrary.Proxies;
 
 namespace OrderLibrary
 {
@@ -12,9 +12,9 @@ namespace OrderLibrary
         
         public OrderService()
         {
-            _decorators.Add(Bank.Bank.ChinaTrust, new CouponDecorator(new DiscountDecorator(new RebateDecorator(new ChinaTrust()))));
-            _decorators.Add(Bank.Bank.TaishiBank, new CouponDecorator(new HalfDecorator(new DiscountDecorator(new Taishin()))));
-            _decorators.Add(Bank.Bank.CityBank, new HalfDecorator(new BonusDecorator(new RebateDecorator(new CityBank()))));
+            _decorators.Add(Bank.Bank.ChinaTrust, new CouponProxy(new DiscountProxy(new RebateDecorator(new ChinaTrust()))));
+            _decorators.Add(Bank.Bank.TaishiBank, new CouponProxy(new HalfProxy(new DiscountProxy(new Taishin()))));
+            _decorators.Add(Bank.Bank.CityBank, new HalfProxy(new BonusDecorator(new RebateDecorator(new CityBank()))));
         }
 
         public double GetPrice(Bank.Bank bank, double price)
